@@ -1,0 +1,7 @@
+*project : bedienen van lampen K4 met een api
+* install bootstrap
+
+Vragen:
+
+waar kunnen we de http requests zien ?
+waarom flask ?

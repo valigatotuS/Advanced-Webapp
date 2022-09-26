@@ -1,0 +1,41 @@
+body {
+  background-color:azure;
+}
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
+
+#stylesheetlink {
+	font-family: Consolas,monaco,monospace; 
+    font-style: italic;
+    font-weight: bold;
+
+}
+
+.emph {
+    font-size: larger;
+    font-weight: bold;
+    color: darkred;    
+}
+
+.htmltags {
+	font-family: Consolas,monaco,monospace; 
+}
+
+ul.blokjes {
+    list-style-type: square;
+    color:darkblue;
+    border: 1px;
+    border-style: dashed;
+    display: inline-block;
+}
+
+ul.blokjes li {
+    margin-bottom: 10px;
+}
+
+ul.blokjes li .htmltags {
+    color:blue;
+}
