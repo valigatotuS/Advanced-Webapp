@@ -1,0 +1,4 @@
+*.pub
+*.ovpn
+*__pycache__
+*sandbox/

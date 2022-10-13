@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/reset.css" >
+    <link rel="stylesheet" href="static/css/login.css" >
+    <title>Sign in to your account</title>
+</head>
+<body>
+    <div class="background">
+        <div class="login box">
+            {% if get_flashed_messages() %}
+            <div class="alert">
+                {{get_flashed_messages()[-1]}}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+            {% endif %}
+            <form class="login-form" method="POST" action="" role="form">
+                <img id="login-logo" role="img" src="static/img/lamp.png" >
+                <div class="title">Sign in</div>
+                
+                {{ form.hidden_tag() }}
+                {{ form.email(size=20, class="email input", placeholder="Email") }}
+                {{ form.password(size=20, class="password input", placeholder="Password") }}
+                <a id="login-link" href="register">Create account</a>
+                {{ form.submit(id="log-btn", method="POST", value="Sign in") }}
+            </form>
+            <div class="footer">Welcome to the login page for accessing the lamps in building K.4.04.</div>
+        </div>
+    </div>    
+</body>
+</html>

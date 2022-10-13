@@ -1,3 +1,13 @@
+body{
+    opacity: 95%;
+    height: 100%;
+    width: 100%;
+    background: rgb(170, 170, 170) url(https://www.teacheracademy.eu/wp-content/uploads/2020/02/english-classroom.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-blend-mode:soft-light;
+}
 
 p{
     color: rgb(59, 57, 57);

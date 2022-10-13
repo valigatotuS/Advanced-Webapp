@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/reset.css" >
+    <link rel="stylesheet" href="static/css/login.css">
+    <title>Sign in to your account</title>
+</head>
+<body>
+    <div class="background">
+        <div class="login box">
+            <form class="login-form" method="POST">
+                <img id="login-logo" role="img" src="static/img/lamp.png" >
+                <div class="title">Create your account</div>
+                {{ form.hidden_tag() }}
+                {{ form.firstname(size=20, class="fname input", placeholder="firstname") }}
+                {{ form.lastname(size=20, class="lname input", placeholder="lastname") }}
+                {{ form.email(size=20, class="email input", placeholder="email") }}
+                {{ form.password(size=20, class="password input", placeholder="password") }}
+                <a id="signin-link" href="login">Sign in</a>
+                {{ form.submit(id="log-btn", method="POST", value="Sign up") }}
+            </form>
+            <div class="footer">Welcome to the register page for accessing the lamps in building K.4.04.</div>
+        </div>
+    </div>
+</body>
+</html>
