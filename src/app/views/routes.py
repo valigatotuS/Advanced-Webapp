@@ -1,13 +1,14 @@
 """Route declaration."""
 from curses import flash
-import email
 from flask import current_app as app
 from flask import render_template, request, redirect
 import flask
 import coapclient
-import asyncio
 from aiocoap import *
 import flask_login
+from app.extensions import db
+from app.database.models import User
+import bcrypt
 
 @app.route("/")
 @flask_login.login_required
@@ -105,6 +106,10 @@ async def lamp_request(lamp):
         #implement error afhandeling (error format or reponses)
         return({'error':'not supported'}, 405)
 
+@app.route('/history', methods=['GET', 'POST'])
+def history():
+    return render_template("lamp_dashboard.html")
+
 
 #------- login/register routes -------#
 
@@ -156,11 +161,8 @@ def register():
 @flask_login.login_required
 def logout():
     flask_login.logout_user()
-    return 'Logged out'
-
-from app.extensions import db
-from app.database.models import User
-import bcrypt
+    flask.flash("Logged out.")
+    return redirect('\login')
 
 @app.route('/api/user/', methods=['GET', 'POST', 'PUT'])
 def add_user_request():
