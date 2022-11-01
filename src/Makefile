@@ -28,7 +28,7 @@ all help:
 
 .PHONY: run
 run:
-	$(shell . .venv/bin/activate && python3 wsgi.py)
+	$(shell python3 wsgi.py)
 
 
 .PHONY: deploy

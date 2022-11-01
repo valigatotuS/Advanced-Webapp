@@ -8,6 +8,7 @@ TO DO:
 - active page highlight (https://getbootstrap.com/docs/4.0/components/navs/)
 - history page
 - user page
+- websocket
 - docker 
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Verslag:
 
 - Toolkeuze en verdediging ...
     - flask, sqlalchemy, sqlite, openvpn, bcrypt, flask-login
+    - websockets...
     - git 
     - Makefile
     - docker ?

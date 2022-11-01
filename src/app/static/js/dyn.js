@@ -11,18 +11,20 @@ $(document).ready(function(){
     //         url : 'api/lamp/'
     //     })
     // );
+    
+    // $.ajax({
+    //     method : 'GET',
+    //     url : 'api/lamp/lamp1a',
+    //     success : function(e){
+    //         console.log(e.result);
+    //     }
+    // })
 
-    $.ajax({
-        method : 'GET',
-        url : 'api/lamp/lamp1a',
-        success : function(e){
-            console.log(e.result);
-        }
-    })
+
 
     $(".mijnsliders").change(function() {
         console.log("Slider " + this.id + 'aangepast naar ' + $(this).val());
-        $('#' + this.id + 'waarde').text($(this).val());
+        $('#' + this.id + 'waarde').text($(this).val() + " %");
         // api call 
         $.ajax({
             data : {
@@ -30,21 +32,47 @@ $(document).ready(function(){
               dimming : $(this).val()
             },
             method : 'POST',
-            url : 'api/lamp/'
+            url : 'api/lamp/' + $(this).closest("div").parent().attr("id")
         })
+        window.alert("sometext");
+        
+
     });     
 
-    // $("#mijn1eslider").change(function() {
-    //   alert("slider 1 aangepast");
-    //   console.log("slider 1 aangepast");
-    //   $("#mijn1ewaarde").text($("#mijn1eslider").val())
-    // });         
+    //  web-socket implementation
     
-  });
+    
+    //   var socket = io();
+    
+    //   var messages = document.getElementById('messages');
+    //   var form = document.getElementById('form');
+    //   var input = document.getElementById('input');
+    
+    //   form.addEventListener('submit', function(e) {
+    //     e.preventDefault();
+    //     if (input.value) {
+    //       socket.emit('addToChat', input.value);
+    //       input.value = '';
+    //     }
+    //   });
+    
+    //   socket.on('ReceiveFromChatServer', function(msg) {
+    //     var item = document.createElement('li');
+    //     item.textContent = msg;
+    //     messages.appendChild(item);
+    //     window.scrollTo(0, document.body.scrollHeight);
+    //     console.log(msg)
+    //   });
+    
+    
+});
 
+
+  
 // my functions
 
 function refreshSlider(){
     $("#mijn1eslider").val(99);
     console.log('Get lamp status');
 }
+

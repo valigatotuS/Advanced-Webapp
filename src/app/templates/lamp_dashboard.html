@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/style.css" >
     <script type="text/javascript" src="static/js/dyn.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <title>LAMPS</title>
 </head>
 <body>
@@ -28,127 +28,164 @@
     </ul>
 
     <div class="flexcontainer">
+
+        
         <div id="lamp1a" class="lampcontainer">
-            <p>lamp 1a</p>
+            <p>1a</p>
             <div id="lamp1a" class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn1eslider">
-                <span class='waarde' id="mijn1esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp1aslider">
+                <span class='waarde' id="lamp1asliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp1b" class="lampcontainer">
-            <p>lamp 1b</p>
+            <p>1b</p>
             <div id="lamp1b" class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn2eslider">
-                <span class='waarde' id="mijn2esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp1bslider">
+                <span class='waarde' id="lamp1bsliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp1c" class="lampcontainer">
-            <p>lamp 1c</p>
+            <p>1c</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn3eslider">
-                <span class='waarde' id="mijn3esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp1cslider">
+                <span class='waarde' id="lamp1csliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp2a" class="lampcontainer">
-            <p>lamp 2a</p>
+            <p>2a</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn4eslider">
-                <span class='waarde' id="mijn4esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp2aslider">
+                <span class='waarde' id="lamp2asliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp2b" class="lampcontainer">
-            <p>lamp 2b</p>
+            <p>2b</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn5eslider">
-                <span class='waarde' id="mijn5esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp2bslider">
+                <span class='waarde' id="lamp2bsliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp2c" class="lampcontainer">
-            <p>lamp 2c</p>
+            <p>2c</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn6eslider">
-                <span class='waarde' id="mijn6esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp2cslider">
+                <span class='waarde' id="lamp2csliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp3a" class="lampcontainer">
-            <p>lamp 3a</p>
+            <p>3a</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn7eslider">
-                <span class='waarde' id="mijn7esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp3aslider">
+                <span class='waarde' id="lamp3asliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp3b" class="lampcontainer">
-            <p>lamp 3b</p>
+            <p>3b</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn8eslider">
-                <span class='waarde' id="mijn8esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp3bslider">
+                <span class='waarde' id="lamp3bsliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp3c" class="lampcontainer">
-            <p>lamp 3c</p>
+            <p>3c</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn9eslider">
-                <span class='waarde' id="mijn9esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp3cslider">
+                <span class='waarde' id="lamp3csliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp4a" class="lampcontainer">
-            <p>lamp 4a</p>
+            <p>4a</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn10eslider">
-                <span class='waarde' id="mijn10esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp4aslider">
+                <span class='waarde' id="lamp4asliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp4b" class="lampcontainer">
-            <p>lamp 4b</p>
+            <p>4b</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn11eslider">
-                <span class='waarde' id="mijn11esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp4bslider">
+                <span class='waarde' id="lamp4bsliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp4c" class="lampcontainer">
-            <p>lamp 4c</p>
+            <p>4c</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn12eslider">
-                <span class='waarde' id="mijn12esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp4cslider">
+                <span class='waarde' id="lamp4csliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp5a" class="lampcontainer">
-            <p>lamp 5a</p>
+            <p>5a</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn13eslider">
-                <span class='waarde' id="mijn13esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp5aeslider">
+                <span class='waarde' id="lamp5asliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp5b" class="lampcontainer">
-            <p>lamp 5b</p>
+            <p>5b</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn14eslider">
-                <span class='waarde' id="mijn14esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp5bslider">
+                <span class='waarde' id="lamp5bsliderwaarde"></span>
             </div>
         </div>
 
         <div id="lamp5c" class="lampcontainer">
-            <p>lamp 5c</p>
+            <p>5c</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn15eslider">
-                <span class='waarde' id="mijn15esliderwaarde">0</span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp5cslider">
+                <span class='waarde' id="lamp5csliderwaarde"></span>
+            </div>
+        </div>
+
+        <div id="all" class="lampcontainer">
+            <p>Room</p>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="100" class="mijnsliders" id="mijn16eslider">
+                <span class='waarde' id="mijn16esliderwaarde"></span>
             </div>
         </div>
 
     </div>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    -->
+    <script>
+      var socket = io();
+    
+      socket.on('ReceiveFromChatServer', function(msg) {
+        console.log("msf:" + msg)
+        var i = 0
+        // $('.waarde').each(function(){
+        //     // $(this).val(msg[i++])
+        //     console.log(msg.lamp1a)
+        // })
+        // if(msg!==null){
+        //     window.alert('Connection to the lamps is not established, check your vpn connection.')
+        // }
+        for (const [key, value] of Object.entries(msg)) {
+            // console.log(key, value);
+            $('#' + key + 'sliderwaarde').text(value.toString() + "%");
+            $('#' + key + 'slider').val(value)
+        }
+        // for (let i = 0; i < 5; i++) {
+        //     $('#' + keys[i]).val(msg[keys[i]])
+        // }
+
+      });
+    </script> 
 
     </body>
 </html>

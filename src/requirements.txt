@@ -25,3 +25,6 @@ urllib3==1.26.12
 Werkzeug==2.2.2
 WTForms==3.0.1
 yarg==0.1.9
+flask>=2.2
+flask-socketio>=5.3
+eventlet>=0.33
