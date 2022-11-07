@@ -1,9 +1,0 @@
-Collecting eventlet
-  Using cached eventlet-0.33.1-py2.py3-none-any.whl (226 kB)
-Requirement already satisfied: greenlet>=0.3 in ./.venv/lib/python3.10/site-packages (from eventlet) (2.0.0)
-Collecting six>=1.10.0
-  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
-Collecting dnspython>=1.15.0
-  Using cached dnspython-2.2.1-py3-none-any.whl (269 kB)
-Installing collected packages: six, dnspython, eventlet
-Successfully installed dnspython-2.2.1 eventlet-0.33.1 six-1.16.0
