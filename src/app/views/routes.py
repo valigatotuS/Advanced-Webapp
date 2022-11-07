@@ -2,13 +2,15 @@
 from curses import flash
 from flask import current_app as app
 from flask import render_template, request, redirect
-import flask, sys
+import flask, sys, datetime as dt
 import coapclient
 from aiocoap import *
 import flask_login
+from flask_login import current_user
 from app.extensions import db
-from app.database.models import User
+from app.database.models import User, LampLog
 import bcrypt
+import sqlalchemy #.exc.IntegrityError
 from flask_socketio import SocketIO
 
 
@@ -70,6 +72,15 @@ async def lamp_status_request(lamp_id):
         if ('dimming' in request.form):
             # lamp_id = request.form['lamp_id']
             value = request.form['dimming']
+            # log post
+            lamp_log = LampLog(
+                user_id = current_user.get_id(),
+                timestamp = dt.datetime.now().strftime("%Y-%m-%d, %H:%M:%S"),
+                lamp_id = lamp_id,
+                level = value
+            )
+            db.session.add(lamp_log)
+            db.session.commit()
         else:
             return({'error':'missing dimming payload.'}, 400)
 
@@ -105,7 +116,8 @@ async def room_brightness():
 @app.route('/history', methods=['GET', 'POST'])
 @flask_login.login_required
 def history():
-    return render_template("history.html")
+    logs = LampLog.query.order_by(LampLog.timestamp.desc()).all()
+    return render_template("history.html", logs=logs)
 
 
 #------- login/register routes -------#
@@ -148,9 +160,12 @@ def register():
             db.session.commit()
             flask.flash("Your account has been registered, try to log in")
             return redirect('\login')
+        except sqlalchemy.exc.IntegrityError as err:
+            flask.flash("A user is already registered with this email.")
+            return redirect('\login') 
         except Exception as e:
-            print(e)
-            return e
+            flask.flash(str(e))
+            return redirect('\login') 
     else:
         return flask.render_template('register.html', form=form)
 
@@ -178,6 +193,21 @@ def add_user_request():
     
     return "user added"
 
+# logs
+
+# @app.route('/post_log/<lamp_id>/<level>', methods=['GET', 'POST', 'PUT'])
+# def post_lamp_log(lamp_id, level):
+#     lamp_log = LampLog(
+#         user_id = current_user.get_id(),
+#         timestamp = dt.datetime.now().strftime("%Y-%m-%d, %H:%M:%S"),
+#         lamp_id = lamp_id,
+#         level = level
+#     )
+#     db.session.add(lamp_log)
+#     db.session.commit()
+
+#     return 'log posted'
+    
 
 # websocket #
 

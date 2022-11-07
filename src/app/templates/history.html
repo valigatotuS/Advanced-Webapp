@@ -8,6 +8,7 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/style.css" >
+    <link rel="stylesheet" href="static/css/history.css" >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <script type="text/javascript" src="static/js/dyn.js"></script>
     <title>LAMPS</title>
@@ -20,56 +21,36 @@
         <li class="nav-item">
           <a class="nav-link" href="/history">History</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">User</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link disabled" href="/logout">Logout</a>
         </li>
     </ul>
 
-    <style>
-      body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-
-      #form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
-      #input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
-      #input:focus { outline: none; }
-      #form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
-
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages > li { padding: 0.5rem 1rem; }
-      #messages > li:nth-child(odd) { background: #efefef; }
-    </style>
-
-    <ul id="messages"></ul>
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
-    -->
-    <script>
-      var socket = io();
-    
-      var messages = document.getElementById('messages');
-      var form = document.getElementById('form');
-      var input = document.getElementById('input');
-    
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (input.value) {
-          socket.emit('addToChat', input.value);
-          input.value = '';
-        }
-      });
-    
-      socket.on('ReceiveFromChatServer', function(msg) {
-        var item = document.createElement('li');
-        item.textContent = msg;
-        messages.appendChild(item);
-        window.scrollTo(0, document.body.scrollHeight);
-      });
-    </script> 
+    <div class="logs-container">
+    <table class="logs-table">
+      <thead>
+        <tr>
+            <th>user_id</th>
+            <th>timestamp</th>
+            <th>lamp_id</th>
+            <th>lamp brightness</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for log in logs %} 
+          <tr class="rows">
+              <td>{{log.user_id}}</td>
+              <td>{{log.timestamp}}</td>
+              <td>{{log.lamp_id}}</td>
+              <td>{{log.level}}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+    </div>
 
     </body>
 </html>

@@ -12,6 +12,7 @@ def create_app(config):
     with app.app_context():
         login_manager.init_app(app)
         db.init_app(app)
+        db.create_all()
         bcrypt.init_app(app)
         #---web-socket---#
         # socketio = SocketIO(app, async_mode=None)

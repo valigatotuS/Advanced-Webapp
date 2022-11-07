@@ -34,9 +34,7 @@ $(document).ready(function(){
             method : 'POST',
             url : 'api/lamp/' + $(this).closest("div").parent().attr("id")
         })
-        window.alert("sometext");
-        
-
+        // window.alert("sometext");
     });     
 
     //  web-socket implementation
