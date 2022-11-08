@@ -39,6 +39,15 @@ async def getlampstatus(lamp):
 async def setlampstatus(lamp, brightness):
     await coapsetlampstatus('coap://' + lamp + '.irst.be/lamp/dimming', str.encode(brightness))
 
+def get_lamps_level()->dict:
+    """Return a dictionnary containing the brightness for each lamp {<lamp_id>:<lamp_level=(0-100)>}"""
+    lamp_levels = {}
+
+    for row in range(1,6):
+        for col in ['a', 'b', 'c']:
+            lamp_levels['lamp' + str(row) + col] = (int((asyncio.run(coapgetlampstatus('coap://lamp' + str(row) + str(col) + '.irst.be/lamp/dimming'))).decode('utf-8')))
+    return lamp_levels
+
 
 if __name__ == "__main__":
    asyncio.run(main())

@@ -129,7 +129,7 @@
         <div id="lamp5a" class="lampcontainer">
             <p>5a</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="lamp5aeslider">
+                <input type="range" min="0" max="100" class="mijnsliders" id="lamp5aslider">
                 <span class='waarde' id="lamp5asliderwaarde"></span>
             </div>
         </div>
@@ -153,37 +153,30 @@
         <div id="all" class="lampcontainer">
             <p>Room</p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" class="mijnsliders" id="mijn16eslider">
-                <span class='waarde' id="mijn16esliderwaarde"></span>
+                <input type="range" min="0" max="100" class="mijnsliders" id="allslider">
+                <span class='waarde' id="allsliderwaarde"></span>
             </div>
         </div>
 
     </div>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
-    -->
     <script>
       var socket = io();
     
       socket.on('ReceiveFromChatServer', function(msg) {
-        console.log("msf:" + msg)
+        console.log("msg:" + msg)
         var i = 0
-        // $('.waarde').each(function(){
-        //     // $(this).val(msg[i++])
-        //     console.log(msg.lamp1a)
-        // })
-        // if(msg!==null){
-        //     window.alert('Connection to the lamps is not established, check your vpn connection.')
-        // }
+        var room_brightness = 0
         for (const [key, value] of Object.entries(msg)) {
             // console.log(key, value);
             $('#' + key + 'sliderwaarde').text(value.toString() + "%");
-            $('#' + key + 'slider').val(value)
+            $('#' + key + 'slider').val(value);
+            room_brightness += value;
+            i++; 
         }
-        // for (let i = 0; i < 5; i++) {
-        //     $('#' + keys[i]).val(msg[keys[i]])
-        // }
-
+        room_brightness = (room_brightness / i) >> 0;
+        $('#allsliderwaarde').text(room_brightness.toString() + "%");
+        $('#allslider').val(room_brightness);
       });
     </script> 
 

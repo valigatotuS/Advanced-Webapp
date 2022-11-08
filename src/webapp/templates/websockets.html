@@ -32,7 +32,6 @@
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         if (input.value) {
-        //   socket.emit('addToChat', input.value);
           socket.emit('lampStatus', input.value);
           input.value = '';
         }
