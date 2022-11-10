@@ -1,8 +1,8 @@
 def init_db():
 	"""Initialize database(s)."""
-	from app import create_app,db
+	from webapp import create_app,db
 	from flask import current_app as app
-	from app.database.models import User
+	from webapp.database.models import User
 
 	db.create_all()
 

@@ -28,7 +28,7 @@ all help:
 
 .PHONY: run
 run:
-	$(shell python3 wsgi.py)
+	$(shell python3 asgi.py)
 
 
 .PHONY: deploy
