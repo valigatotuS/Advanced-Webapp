@@ -15,8 +15,8 @@
                 <img id="login-logo" role="img" src="static/img/lamp.png" >
                 <div class="title">Create your account</div>
                 {{ form.hidden_tag() }}
-                {{ form.firstname(size=20, class="fname input", placeholder="firstname") }}
-                {{ form.lastname(size=20, class="lname input", placeholder="lastname") }}
+                {{ form.fname(size=20, class="fname input", placeholder="firstname") }}
+                {{ form.lname(size=20, class="lname input", placeholder="lastname") }}
                 {{ form.email(size=20, class="email input", placeholder="email") }}
                 {{ form.password(size=20, class="password input", placeholder="password") }}
                 <a id="signin-link" href="login">Sign in</a>

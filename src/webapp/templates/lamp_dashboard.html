@@ -162,6 +162,10 @@
 
     <script>
       var socket = io();
+
+      socket.on('connect', function() {
+        socket.emit('my event', {data: 'I\'m connected!'});
+        });
     
       socket.on('ReceiveFromChatServer', function(msg) {
         console.log("msg:" + msg)

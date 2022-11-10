@@ -126,7 +126,9 @@ def register():
         try:
             newUser = User(
                 email = form.email.data, 
-                password = (bcrypt.hashpw(form.password.data.encode('utf-8'), bcrypt.gensalt())).decode('utf-8')
+                password = (bcrypt.hashpw(form.password.data.encode('utf-8'), bcrypt.gensalt())).decode('utf-8'),
+                fname = form.fname.data,
+                lname = form.lname.data
             )
             db.session.add(newUser)
             db.session.commit()
